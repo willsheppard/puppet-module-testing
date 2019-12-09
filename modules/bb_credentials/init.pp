@@ -1,0 +1,3 @@
+class bb_credentials {
+
+}

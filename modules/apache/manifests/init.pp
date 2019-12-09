@@ -22,8 +22,25 @@ class apache (
     name   => $real_package_name
   }
 
-  service { 'httpd':
-    ensure => running,
-    name   => $real_package_name
-  }
+  include bb_credentials
+  bb_credentials::install { 'apache2': }
 }
+
+# if I uncomment the lines below, the test passes
+# but I want them in a separate file
+
+#class bb_credentials {
+#
+#}
+#
+#
+#define bb_credentials::install () {
+#
+#    include stdlib
+#
+#    service { 'httpd':
+#        ensure => running,
+#        name   => $name
+#    }
+#
+#}
